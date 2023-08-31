@@ -8,9 +8,9 @@ internal class Program
         Console.WriteLine("Hello, World!");
     }
 
-    public static bool FirstParcelLine (List<BoxSize> boxSizes)
+    public static void FirstParcelLine (List<BoxSize> boxSizes)
     {
-        bool parcelFits = false;
+        //bool parcelFits = false;
 
         foreach (BoxSize box in boxSizes) {
             Console.WriteLine("Next sorting line starts");
@@ -23,9 +23,20 @@ internal class Program
                 {
                     Console.WriteLine("Sorting line width is {0} and it fits",sortingLine.Width);
                 }
+
+                else if (sortingLine.Width >= box.Width)
+                {
+                    Console.WriteLine("Sorting line width is {0} and it fits", sortingLine.Width);
+                }
+                else
+                {
+                    Console.WriteLine("Parcel does not fit");
+                }
+
+                Console.WriteLine("\n");
             }
         }
-        return parcelFits;
+       // return parcelFits;
     }
 
     public static readonly List<BoxSize> boxSizes = new List<BoxSize>
@@ -104,7 +115,7 @@ internal class Program
 
 
 
-class BoxSize
+public class BoxSize
 {
     public int Length { get; set; }
     public int Width { get; set; }
@@ -112,7 +123,7 @@ class BoxSize
         = new List<SortingLineParam>();
 }
 
-class SortingLineParam
+public class SortingLineParam
 {
     public int Width { get; set; }
 }
